@@ -11,3 +11,7 @@ export const AppContainer = styled.main`
         margin: 0 auto;
     }
 `
+
+export const Header = styled.header`
+    width: 100%;
+`
