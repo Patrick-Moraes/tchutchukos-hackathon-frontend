@@ -1,5 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+
 import * as S from "./../styles/styles.js"
 
 import logo from "./../assets/favicon.png"
@@ -18,6 +20,7 @@ export default function Header() {
                 />
                 <h1 className="title">Curso dos Tchuchukos</h1>
             </div>
+            <img src={logo} alt="" />
             <div className="options">
                 <button
                     className="firstButton"

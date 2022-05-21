@@ -8,7 +8,7 @@ import GlobalStyle from "../styles/globalstyle.js"
 import { theme } from "../styles/theme.js"
 import MainPage from "../pages/MainPage.js"
 import CollectionVideo from "../pages/CollectionVideo.js"
-
+import VideoPage from "../pages/VideoPage.js"
 export default function App() {
     return (
         <ThemeProvider theme={theme}>
@@ -19,9 +19,9 @@ export default function App() {
                         <Route path="" element={<MainPage />} />
                         <Route
                             path="/collection/:collection"
-                            element={<CollectionVideo />}
-                        />
-                    </Route>
+                            element={<CollectionVideo />} />
+                        <Route path="videos/:videoId" element={<VideoPage />} />
+                 </Route>
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>
