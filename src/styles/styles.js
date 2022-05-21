@@ -16,11 +16,6 @@ export const AppContainer = styled.main`
     }
 `
 
-export const Header = styled.header`
-    &:hover {
-        cursor: pointer;
-    }
-
 export const PageContainer = styled.main`
     width: 100%;
     min-height: calc(100vh - 100px);
@@ -417,3 +412,4 @@ export const CommentAuthor = styled.p`
 
 export const CommentText = styled.p`
     margin: 0 0 10px;
+`
