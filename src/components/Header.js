@@ -1,12 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import * as s from "./../styles/styles.js"
+import * as S from "./../styles/styles.js"
 
 import logo from "./../assets/favicon.png"
 
 export default function Header() {
     return (
-        <s.Header>
+        <S.Header>
             <img src={logo} alt="" />
             <div className="options">
                 <button className="firstButton" to="/">
@@ -19,6 +19,6 @@ export default function Header() {
                     PHP
                 </button>
             </div>
-        </s.Header>
+        </S.Header>
     )
 }
