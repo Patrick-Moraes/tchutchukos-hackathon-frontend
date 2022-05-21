@@ -8,8 +8,6 @@ export const PageContainer = styled.main`
 `
 
 export const Header = styled.header`
-    background-color: orange;
-
     position: fixed;
     top: 0;
 
@@ -57,18 +55,26 @@ export const Header = styled.header`
 // VIDEO PAGE
 
 export const VideoPageContainer = styled.div`
-    background-color: blue;
+    /* background-color: blue; */
 
     display: flex;
+
+    padding-top: 20px;
 `
 
 export const VideosSidebar = styled.aside`
-    background-color: green;
+    /* background-color: green; */
 
     max-width: 500px;
     height: 100%;
 
     padding: 10px;
+
+    border-right: 2px solid black;
+
+    @media (max-width: 1100px) {
+        display: none;
+    }
 `
 export const SidebarTitle = styled.h3`
     display: flex;
@@ -114,7 +120,7 @@ export const SidebarVideoReleaseDate = styled.p`
 `
 
 export const MainContent = styled.section`
-    background-color: red;
+    /* background-color: red; */
 
     width: 100%;
     height: 100%;
@@ -123,7 +129,7 @@ export const MainContent = styled.section`
 `
 
 export const VideoInfoContainer = styled.div`
-    background-color: purple;
+    /* background-color: purple; */
 
     display: flex;
     height: 100%;
@@ -131,7 +137,7 @@ export const VideoInfoContainer = styled.div`
 `
 
 export const Video = styled.div`
-    background-color: yellow;
+    /* background-color: yellow; */
 
     align-self: center;
 
@@ -144,13 +150,18 @@ export const Video = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border-radius: 5px;
+    box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2);
 `
 
 export const VideoInfo = styled.div`
-    background-color: aliceblue;
+    /* background-color: aliceblue;
+     */
+    background-color: #66d7d1;
 
     /*height: 100%; */
-    width: 50%;
+    width: 70%;
 
     display: flex;
     flex-direction: column;
@@ -159,6 +170,8 @@ export const VideoInfo = styled.div`
 
     padding: 10px;
     margin: 0 0 0 20px;
+
+    box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2);
 
     border-radius: 10px 0 0 10px;
 `
@@ -169,6 +182,7 @@ export const MainInfo = styled.div`
 
 export const SecondaryInfo = styled.div`
     /* height: 100%; */
+    font-size: 14px;
 `
 
 export const VideoTitle = styled.h2`
@@ -196,12 +210,12 @@ export const VideoDescription = styled.p`
 `
 
 export const Categories = styled.div`
-    background-color: bisque;
+    /* background-color: bisque; */
 
     display: flex;
 
     border-radius: 5px;
-    padding: 5px;
+    /* padding: 5px; */
 `
 
 export const Category = styled.div`
@@ -213,6 +227,10 @@ export const Category = styled.div`
     border-radius: 5px;
 
     color: white;
+
+    &:first-of-type {
+        margin-left: 0;
+    }
 `
 
 export const ReleaseDate = styled.p`
@@ -220,12 +238,17 @@ export const ReleaseDate = styled.p`
 `
 
 export const Comments = styled.div`
+    background-color: white;
     height: 100%;
-    padding: 10px 5px;
+    padding: 30px 20px;
+    margin: 30px 20px;
+    border-radius: 10px;
+
+    box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2);
 `
 
 export const Comment = styled.div`
-    padding: 15px 5px;
+    padding: 15px 0;
 
     display: flex;
     flex-direction: column;
@@ -237,10 +260,75 @@ export const Comment = styled.div`
     }
 `
 
+export const CommentForm = styled.form`
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    input {
+        font-family: "Inter", sans-serif;
+        width: 300px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #66d7d1;
+
+        /* color: white; */
+
+        &::placeholder {
+            /* color: white; */
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+        }
+    }
+
+    textarea {
+        font-family: "Inter", sans-serif;
+        resize: vertical;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #66d7d1;
+        /* color: white; */
+
+        &::placeholder {
+            /* color: white; */
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+        }
+    }
+
+    button {
+        font-family: "Inter", sans-serif;
+
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #403d58;
+
+        margin-top: 10px;
+
+        color: white;
+        font-weight: 600;
+    }
+`
+
 export const CommentAuthor = styled.p`
     margin: 0 0 5px;
 `
 
 export const CommentText = styled.p`
     margin: 0 0 10px;
+`
 
+export const CommentsLabel = styled.h2`
+    margin-top: 20px;
+    font-weight: 600;
+`
+
+export const CommentsLabelTitle = styled(CommentsLabel)`
+    margin-top: 0;
+    margin-bottom: 20px;
+`

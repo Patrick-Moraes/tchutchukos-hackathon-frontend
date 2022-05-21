@@ -29,6 +29,21 @@ body {
   background-color: ${({ theme }) => theme.colors.scrollbarColor};
   }
 }
+
+input, textarea {
+  &:focus {
+          outline: none;
+      }
+}
+
+button {
+  cursor:  pointer;
+}
+
+Link, a {
+  color: inherit;
+  text-decoration: none;
+}
 `
 
 export default GlobalStyle

@@ -13,7 +13,7 @@ export default function App() {
     return (
         <ThemeProvider theme={theme}>
             <BrowserRouter>
-                {/* <GlobalStyle /> */}
+                <GlobalStyle />
                 <Routes>
                     <Route path="/" element={<DefaultPage />}>
                         <Route path="" element={<MainPage />} />

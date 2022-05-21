@@ -1,49 +1,22 @@
 import React, { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import axios from "axios"
 
 import * as S from "./../styles/styles.js"
-
-const categories = [
-    {
-        _id: "62882b7358e88f865c18b3e7",
-        image: "https://www.cursoemvideo.com/wp-content/uploads/2019/08/html5-300x300.jpg",
-        title: "HTML5",
-        description:
-            "Aprenda HTML5, CSS3 e JavaScript enquanto monta um site completo com essas tecnologias.",
-    },
-    {
-        _id: "62882b7358e88f865c18b3e8",
-        image: "https://www.cursoemvideo.com/wp-content/uploads/2019/08/javascript-300x300.jpg",
-        title: "Javascript",
-        description:
-            "Curso de JavaScript, voltado para iniciantes sobre ECMAScript, a versão padronizada do JS.",
-    },
-    {
-        _id: "62882b7358e88f865c18b3e9",
-        image: "https://www.cursoemvideo.com/wp-content/uploads/2019/08/php-300x300.jpg",
-        title: "PHP Básico",
-        description:
-            "Curso com os primeiros passos para criar sites que utilizem a tecnologia PHP incorporada.",
-    },
-]
-
-const category = {
-    _id: "62882b7358e88f865c18b3e7",
-    image: "https://www.cursoemvideo.com/wp-content/uploads/2019/08/html5-300x300.jpg",
-    title: "HTML5",
-    description:
-        "Aprenda HTML5, CSS3 e JavaScript enquanto monta um site completo com essas tecnologias.",
-}
+import { useEffect } from "react/cjs/react.production.min"
 
 export default function VideoPage() {
     const { videoId } = useParams()
+    const navigate = useNavigate()
+
+    const [name, setName] = useState("")
+    const [newComment, setNewComment] = useState("")
 
     const API_URL = process.env.REACT_APP_API_URL
 
     const [videos, setVideos] = useState(() => {
         axios
-            .get(`${API_URL}/videos`)
+            .get(`${API_URL}/videos/`)
             .then((response) => {
                 console.log(response.data)
 
@@ -63,37 +36,57 @@ export default function VideoPage() {
             .catch((error) => {})
     })
 
+    function handleSubmit() {
+        axios
+            .post(`${API_URL}/videos/${videoId}`, {
+                name,
+                comment: newComment,
+            })
+            .then((response) => {})
+            .catch((error) => {})
+    }
+
+    function handleClick(e, sidebarVideo) {
+        navigate(`/videos/${sidebarVideo._id}`)
+    }
+
     return (
         <S.PageContainer>
             <S.VideoPageContainer>
                 <S.VideosSidebar>
-                    <S.SidebarTitle>Vídeos de {category.title}</S.SidebarTitle>
+                    <S.SidebarTitle>Outros vídeos</S.SidebarTitle>
                     <S.SidebarVideos>
                         {videos?.map((sidebarVideo) => (
-                            <S.SidebarVideo>
-                                <S.SidebarVideoTitle>
-                                    {sidebarVideo.title}
-                                </S.SidebarVideoTitle>
-                                <S.SidebarVideoAuthor>
-                                    {sidebarVideo.author}
-                                </S.SidebarVideoAuthor>
-                                <S.SidebarVideoReleaseDate>
-                                    Data de envio:{" "}
-                                    {`${
-                                        sidebarVideo.releaseDate.split(
-                                            /[-T]/
-                                        )[2]
-                                    }/${
-                                        sidebarVideo.releaseDate.split(
-                                            /[-T]/
-                                        )[1]
-                                    }/${
-                                        sidebarVideo.releaseDate.split(
-                                            /[-T]/
-                                        )[0]
-                                    }`}
-                                </S.SidebarVideoReleaseDate>
-                            </S.SidebarVideo>
+                            <Link to={`/videos/${sidebarVideo._id}`}>
+                                <S.SidebarVideo
+                                    onClick={(sidebarVideo) =>
+                                        handleClick(sidebarVideo)
+                                    }
+                                >
+                                    <S.SidebarVideoTitle>
+                                        {sidebarVideo.title}
+                                    </S.SidebarVideoTitle>
+                                    <S.SidebarVideoAuthor>
+                                        {sidebarVideo.author}
+                                    </S.SidebarVideoAuthor>
+                                    <S.SidebarVideoReleaseDate>
+                                        Data de envio:{" "}
+                                        {`${
+                                            sidebarVideo.releaseDate.split(
+                                                /[-T]/
+                                            )[2]
+                                        }/${
+                                            sidebarVideo.releaseDate.split(
+                                                /[-T]/
+                                            )[1]
+                                        }/${
+                                            sidebarVideo.releaseDate.split(
+                                                /[-T]/
+                                            )[0]
+                                        }`}
+                                    </S.SidebarVideoReleaseDate>
+                                </S.SidebarVideo>
+                            </Link>
                         ))}
                     </S.SidebarVideos>
                 </S.VideosSidebar>
@@ -154,6 +147,29 @@ export default function VideoPage() {
                                 </S.VideoInfo>
                             </S.VideoInfoContainer>
                             <S.Comments>
+                                <S.CommentsLabelTitle>
+                                    Insira um novo comentário:{" "}
+                                </S.CommentsLabelTitle>
+                                <S.CommentForm onSubmit={handleSubmit}>
+                                    <input
+                                        type="text"
+                                        placeholder="Nome"
+                                        value={name}
+                                        onChange={(e) =>
+                                            setName(e.target.value)
+                                        }
+                                    />
+                                    <textarea
+                                        type="text"
+                                        placeholder="Insira aqui o seu comentário"
+                                        value={newComment}
+                                        onChange={(e) =>
+                                            setNewComment(e.target.value)
+                                        }
+                                    />
+                                    <button>Enviar</button>
+                                </S.CommentForm>
+                                <S.CommentsLabel>Comentários: </S.CommentsLabel>
                                 {video.comments.map(({ name, comment }) => (
                                     <S.Comment>
                                         <S.CommentAuthor>
