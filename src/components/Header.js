@@ -8,18 +8,21 @@ export default function Header() {
     const navegation = useNavigate()
     return (
         <S.Header>
-            <img
-                src={logo}
-                alt="logo"
-                onClick={() => {
-                    navegation("/")
-                }}
-            />
+            <div className="logoNtitle">
+                <img
+                    src={logo}
+                    alt="logo"
+                    onClick={() => {
+                        navegation("/")
+                    }}
+                />
+                <h1 className="title">Curso dos Tchuchukos</h1>
+            </div>
             <div className="options">
                 <button
                     className="firstButton"
                     onClick={() => {
-                        navegation("/")
+                        navegation("/collection/Python")
                     }}
                 >
                     Python
@@ -27,7 +30,7 @@ export default function Header() {
                 <button
                     className="secondtButton"
                     onClick={() => {
-                        navegation("/")
+                        navegation("/collection/JavaScript")
                     }}
                 >
                     JavaScript
@@ -35,7 +38,7 @@ export default function Header() {
                 <button
                     className="thirdButton"
                     onClick={() => {
-                        navegation("/")
+                        navegation("/collection/PHP")
                     }}
                 >
                     PHP

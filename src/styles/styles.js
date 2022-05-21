@@ -34,6 +34,15 @@ export const Header = styled.header`
     background-color: #fc7753;
     color: #403d58;
     align-items: center;
+    .logoNtitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .title {
+        font-size: 35px;
+        font-weight: 700;
+    }
     .options {
         padding: 20px;
         display: flex;
@@ -128,14 +137,18 @@ export const ColletionContainer = styled.div`
         cursor: pointer;
     }
     box-sizing: border-box;
+
+    position: relative;
+
     width: 400px;
     height: 380px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
+
     box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     margin: 20px;
@@ -175,6 +188,12 @@ export const ColletionContainer = styled.div`
             color: #403d58;
             font-family: "Inter", sans-serif;
             text-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2);
+        }
+        .time {
+            position: absolute;
+            z-index: 5;
+            bottom: 0px;
+            right: 10px;
         }
     }
 `

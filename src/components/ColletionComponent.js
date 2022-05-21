@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
@@ -8,6 +8,7 @@ import * as S from "./../styles/styles.js"
 export default function ColletionComponent() {
     const [infoColleciton, setInfoColleciton] = useState()
     const { collection } = useParams()
+    const navigation = useNavigate()
 
     useEffect(() => {
         axios({
@@ -30,7 +31,12 @@ export default function ColletionComponent() {
                 {infoColleciton ? (
                     infoColleciton.map((item, index) => {
                         return (
-                            <S.ColletionContainer key={index}>
+                            <S.ColletionContainer
+                                key={index}
+                                onClick={() => {
+                                    navigation(`/videos/${item._id}`)
+                                }}
+                            >
                                 <img
                                     src="https://img.freepik.com/fotos-gratis/paisagem-natural-em-um-jardim-botanico_35355-5948.jpg"
                                     alt={item.description}
@@ -39,6 +45,7 @@ export default function ColletionComponent() {
                                     <h1>{item.title}</h1>
                                     <p>{item.author}</p>
                                     {/* <p>{item.releaseDate}</p> */}
+                                    <p className="time">{item.duration}</p>
                                 </div>
                             </S.ColletionContainer>
                         )
