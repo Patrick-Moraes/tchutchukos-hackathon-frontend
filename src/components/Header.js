@@ -20,7 +20,7 @@ export default function Header() {
                 />
                 <h1 className="title">Curso dos Tchuchukos</h1>
             </div>
-            <img src={logo} alt="" />
+            {/* <img src={logo} alt="" /> */}
             <div className="options">
                 <button
                     className="firstButton"
