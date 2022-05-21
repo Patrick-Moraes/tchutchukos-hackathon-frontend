@@ -1,24 +1,46 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import * as s from "./../styles/styles.js"
+import { useNavigate } from "react-router-dom"
+import * as S from "./../styles/styles.js"
 
 import logo from "./../assets/favicon.png"
 
 export default function Header() {
+    const navegation = useNavigate()
     return (
-        <s.Header>
-            <img src={logo} alt="" />
+        <S.Header>
+            <img
+                src={logo}
+                alt="logo"
+                onClick={() => {
+                    navegation("/")
+                }}
+            />
             <div className="options">
-                <button className="firstButton" to="/">
+                <button
+                    className="firstButton"
+                    onClick={() => {
+                        navegation("/")
+                    }}
+                >
                     Python
                 </button>
-                <button className="secondtButton" to="/">
+                <button
+                    className="secondtButton"
+                    onClick={() => {
+                        navegation("/")
+                    }}
+                >
                     JavaScript
                 </button>
-                <button className="thirdButton" to="/">
+                <button
+                    className="thirdButton"
+                    onClick={() => {
+                        navegation("/")
+                    }}
+                >
                     PHP
                 </button>
             </div>
-        </s.Header>
+        </S.Header>
     )
 }
